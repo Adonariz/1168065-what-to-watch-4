@@ -1,8 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Алексей Жила](https://up.htmlacademy.ru/react/4/user/1168065).
-* Наставник: `Неизвестно`.
-
+* Наставник: [Владимир Федин](https://up.htmlacademy.ru/react/4/user/1056177).
 ---
 
 _Не удаляйте и не изменяйте папки и файлы:_
