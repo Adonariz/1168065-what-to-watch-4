@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 
-const Movie = {
+export const Movie = {
   TITLE: `The Grand Budapest Hotel`,
   GENRE: `Drama`,
   YEAR: `2014`,
 };
 
-const MOVIE_TITLES = [
+export const MOVIE_TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
   `Bohemian Rhapsody`,
   `Macbeth`,
