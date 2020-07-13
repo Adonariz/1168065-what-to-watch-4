@@ -13,6 +13,7 @@ describe(`SmallMovieCardComponent`, () => {
       .create(
           <SmallMovieCard
             onTitleClick={() => {}}
+            onCardHover={() => {}}
             movie={movie}/>)
       .toJSON();
 
