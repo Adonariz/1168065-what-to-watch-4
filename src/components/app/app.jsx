@@ -2,27 +2,32 @@ import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
-const movieTitleHandler = () => {};
+const titleClickHandler = (evt) => {
+  evt.preventDefault();
+};
 
-const App = (props) => {
-  const {title, genre, year, movies} = props;
-
+const App = ({promoMovie, movies}) => {
   return (
     <Main
-      title={title}
-      genre={genre}
-      year={year}
+      promoMovie={promoMovie}
       movies={movies}
-      onMovieTitleClick={movieTitleHandler}
+      onTitleClick={titleClickHandler}
     />
   );
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  promoMovie: PropTypes.shape({
+    TITLE: PropTypes.string.isRequired,
+    GENRE: PropTypes.string.isRequired,
+    DATE: PropTypes.string.isRequired,
+  }).isRequired,
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+      }).isRequired
+  ).isRequired,
 };
 
 export default App;

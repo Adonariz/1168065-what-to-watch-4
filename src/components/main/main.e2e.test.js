@@ -1,8 +1,31 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
-import {Movie, MOVIE_TITLES} from "../mocks/const";
+
+const promoMovie = {
+  TITLE: `The Dark Knight`,
+  GENRE: `Action`,
+  DATE: `2008`,
+};
+
+const movies = [
+  {
+    title: `title-1`,
+    image: `image-1`
+  },
+  {
+    title: `title-2`,
+    image: `image-2`
+  },
+  {
+    title: `title-3`,
+    image: `image-3`
+  },
+  {
+    title: `title-4`,
+    image: `image-4`
+  }];
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -10,15 +33,13 @@ Enzyme.configure({
 
 describe(`MainComponent`, () => {
   it(`should title be pressed`, () => {
-    const onMovieTitleClick = jest.fn();
+    const titleClickHandler = jest.fn();
 
-    const main = shallow(
+    const main = mount(
         <Main
-          title={Movie.TITLE}
-          genre={Movie.GENRE}
-          year={Movie.YEAR}
-          movies={MOVIE_TITLES}
-          onMovieTitleClick={onMovieTitleClick}
+          promoMovie={promoMovie}
+          movies={movies}
+          onTitleClick={titleClickHandler}
         />
     );
 
@@ -28,6 +49,6 @@ describe(`MainComponent`, () => {
       movieTitle.simulate(`click`);
     });
 
-    expect(onMovieTitleClick).toHaveBeenCalledTimes(movieTitles.length);
+    expect(titleClickHandler).toHaveBeenCalledTimes(movies.length);
   });
 });
