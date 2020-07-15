@@ -1,7 +1,7 @@
 export const Movie = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  YEAR: `2014`,
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  date: `2014`,
 };
 
 export const movies = [

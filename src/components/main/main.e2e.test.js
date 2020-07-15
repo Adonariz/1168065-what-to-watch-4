@@ -4,9 +4,9 @@ import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
 
 const promoMovie = {
-  TITLE: `The Dark Knight`,
-  GENRE: `Action`,
-  DATE: `2008`,
+  title: `The Dark Knight`,
+  genre: `Action`,
+  date: `2008`,
 };
 
 const movies = [
