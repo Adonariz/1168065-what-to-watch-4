@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SmallMovieCardComponent should render movie card correctly 1`] = `
+exports[`SmallMovieCardComponent should render SmallMovieCard correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseOver={[Function]}
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="small-movie-card__image"
@@ -11,7 +13,7 @@ exports[`SmallMovieCardComponent should render movie card correctly 1`] = `
     <img
       alt="The Grand Budapest Hotel"
       height="175"
-      src="movie-image"
+      src="img/the-grand-budapest-hotel-poster.jpg"
       width="280"
     />
   </div>
@@ -22,6 +24,7 @@ exports[`SmallMovieCardComponent should render movie card correctly 1`] = `
     <a
       className="small-movie-card__link"
       href="movie-page.html"
+      onClick={[Function]}
     >
       The Grand Budapest Hotel
     </a>

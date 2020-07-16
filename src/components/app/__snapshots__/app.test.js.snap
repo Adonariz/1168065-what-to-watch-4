@@ -9,7 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Dark Knight"
+        alt="The Grand Budapest Hotel"
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
@@ -69,7 +69,7 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Dark Knight"
+            alt="The Grand Budapest Hotel"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Dark Knight
+            The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Action
+              Comedy-drama
             </span>
             <span
               className="movie-card__year"
             >
-              2008
+              2014
             </span>
           </p>
           <div
@@ -259,7 +259,9 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -278,6 +280,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               title-1
             </a>
@@ -285,7 +288,9 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -304,6 +309,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               title-2
             </a>
@@ -311,7 +317,9 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -330,6 +338,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               title-3
             </a>
@@ -337,7 +346,9 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -356,6 +367,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               title-4
             </a>

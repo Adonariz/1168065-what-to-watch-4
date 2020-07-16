@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SmallMovieCard = ({movie, onTitleClick, onCardHover}) => {
+const SmallMovieCard = ({movie, onTitleClick, onCardHover, onPosterClick}) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseOver={onCardHover}
+      onClick={() => onPosterClick(movie)}
+      onMouseEnter={() => onCardHover(movie)}
+      onMouseLeave={() => onCardHover({})}
     >
       <div className="small-movie-card__image">
         <img src={movie.image} alt={movie.title} width="280" height="175" />
@@ -14,7 +16,16 @@ const SmallMovieCard = ({movie, onTitleClick, onCardHover}) => {
         onClick={onTitleClick}
         className="small-movie-card__title"
       >
-        <a className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
+        <a
+          onClick={(evt) => {
+            evt.preventDefault();
+            onTitleClick(movie);
+          }}
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          {movie.title}
+        </a>
       </h3>
     </article>);
 };
@@ -25,6 +36,7 @@ SmallMovieCard.propTypes = {
     image: PropTypes.string.isRequired,
   }).isRequired,
   onTitleClick: PropTypes.func.isRequired,
+  onPosterClick: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
 };
 

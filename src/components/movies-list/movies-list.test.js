@@ -27,7 +27,9 @@ describe(`MoviesListComponent`, () => {
       .create(
           <MoviesList
             movies={movies}
-            onTitleClick={() => {}}/>)
+            onTitleClick={() => {}}
+            onPosterClick={() => {}}
+          />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
