@@ -1,10 +1,4 @@
-export const Movie = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`,
-};
-
-export const movies = [
+export default [
   {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
