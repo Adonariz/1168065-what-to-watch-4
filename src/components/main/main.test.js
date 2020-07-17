@@ -2,10 +2,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 
-const promoMovie = {
+const movie = {
   title: `The Dark Knight`,
   genre: `Action`,
-  date: `2008`,
+  year: 2008,
 };
 
 const movies = [
@@ -32,9 +32,10 @@ describe(`MainComponent`, () => {
     const tree = renderer
       .create(
           <Main
-            promoMovie={promoMovie}
+            movie={movie}
             movies={movies}
             onTitleClick={() => {}}
+            onPosterClick={() => {}}
           />
       )
       .toJSON();

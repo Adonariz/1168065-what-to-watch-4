@@ -5,7 +5,7 @@ import SmallMovieCard from "./small-movie-card.jsx";
 
 const movie = {
   title: `The Grand Budapest Hotel`,
-  image: `movie-image`,
+  image: `img/the-grand-budapest-hotel-poster.jpg`,
 };
 
 Enzyme.configure({
@@ -13,24 +13,65 @@ Enzyme.configure({
 });
 
 describe(`SmallMovieCardComponent e2e test`, () => {
-  it(`should SmallMovieCard be hovered`, () => {
-    const onCardHover = jest.fn(((args) => args));
+  it(`Should card title be pressed`, () => {
+    const onTitleClick = jest.fn();
 
-    const mainComponent = shallow(
+    const smallMovieCard = shallow(
+        <SmallMovieCard
+          movie={movie}
+          onTitleClick={onTitleClick}
+          onPosterClick={() => {}}
+          onCardHover={() => {}}
+        />
+    );
+
+    const movieTitle = smallMovieCard.find(`.small-movie-card__link`);
+
+    const mockEvent = {
+      preventDefault() {}
+    };
+
+    movieTitle.simulate(`click`, mockEvent);
+
+    expect(onTitleClick.mock.calls.length).toBe(1);
+    expect(onTitleClick).toHaveBeenCalledWith(movie);
+  });
+
+  it(`Should card poster click`, () => {
+    const onPosterClick = jest.fn();
+
+    const smallMovieCard = shallow(
         <SmallMovieCard
           movie={movie}
           onTitleClick={() => {}}
+          onPosterClick={onPosterClick}
+          onCardHover={() => {}}
+        />
+    );
+
+    const card = smallMovieCard.find(`.small-movie-card`);
+    card.simulate(`click`);
+
+    expect(onPosterClick).toHaveBeenCalledTimes(1);
+    expect(onPosterClick).toHaveBeenCalledWith(movie);
+  });
+
+  it(`Should Card be hovered with correct args`, () => {
+    const onCardHover = jest.fn();
+
+    const smallMovieCard = shallow(
+        <SmallMovieCard
+          movie={movie}
+          onTitleClick={() => {}}
+          onPosterClick={() => {}}
           onCardHover={onCardHover}
         />
     );
 
-    const movieCards = mainComponent.find(`.small-movie-card`);
-
-    movieCards.forEach((movieCard) => {
-      movieCard.simulate(`mouseover`, movie);
-    });
+    const card = smallMovieCard.find(`.small-movie-card`);
+    card.simulate(`mouseenter`);
 
     expect(onCardHover).toHaveBeenCalledTimes(1);
-    expect(onCardHover.mock.calls[0][0]).toMatchObject(movie);
+    expect(onCardHover).toHaveBeenCalledWith(movie);
   });
 });

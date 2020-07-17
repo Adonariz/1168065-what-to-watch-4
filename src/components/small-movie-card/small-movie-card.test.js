@@ -4,15 +4,16 @@ import SmallMovieCard from "./small-movie-card.jsx";
 
 const movie = {
   title: `The Grand Budapest Hotel`,
-  image: `movie-image`,
+  image: `img/the-grand-budapest-hotel-poster.jpg`,
 };
 
 describe(`SmallMovieCardComponent`, () => {
-  it(`should render movie card correctly`, () => {
+  it(`should render SmallMovieCard correctly`, () => {
     const tree = renderer
       .create(
           <SmallMovieCard
             onTitleClick={() => {}}
+            onPosterClick={() => {}}
             onCardHover={() => {}}
             movie={movie}/>)
       .toJSON();
