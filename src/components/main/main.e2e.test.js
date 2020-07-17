@@ -6,7 +6,7 @@ import Main from "./main";
 const movie = {
   title: `The Dark Knight`,
   genre: `Action`,
-  date: 2008,
+  year: 2008,
 };
 
 const movies = [

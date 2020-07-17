@@ -5,7 +5,7 @@ import MoviePage from "./movie-page.jsx";
 const movie = {
   title: `The Grand Budapest Hotel`,
   genre: `Comedy-drama`,
-  date: 2014,
+  year: 2014,
   background: `img/bg-the-grand-budapest-hotel.jpg`,
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
   rating: {

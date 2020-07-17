@@ -70,7 +70,7 @@ App.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
   }).isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({

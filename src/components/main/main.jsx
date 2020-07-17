@@ -50,7 +50,7 @@ class Main extends PureComponent {
                 <h2 className="movie-card__title">{movie.title}</h2>
                 <p className="movie-card__meta">
                   <span className="movie-card__genre">{movie.genre}</span>
-                  <span className="movie-card__year">{movie.date}</span>
+                  <span className="movie-card__year">{movie.year}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -143,7 +143,7 @@ Main.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
   }).isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
