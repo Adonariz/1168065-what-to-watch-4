@@ -13,6 +13,11 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     <div
       className="small-movie-card__image"
     >
+      <video
+        className="player__video"
+        muted={true}
+        poster="image-1"
+      />
       <img
         alt="title-1"
         height="175"
@@ -22,7 +27,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -42,6 +46,11 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     <div
       className="small-movie-card__image"
     >
+      <video
+        className="player__video"
+        muted={true}
+        poster="image-2"
+      />
       <img
         alt="title-2"
         height="175"
@@ -51,7 +60,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -71,6 +79,11 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     <div
       className="small-movie-card__image"
     >
+      <video
+        className="player__video"
+        muted={true}
+        poster="image-3"
+      />
       <img
         alt="title-3"
         height="175"
@@ -80,7 +93,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -100,6 +112,11 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     <div
       className="small-movie-card__image"
     >
+      <video
+        className="player__video"
+        muted={true}
+        poster="image-4"
+      />
       <img
         alt="title-4"
         height="175"
@@ -109,7 +126,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"

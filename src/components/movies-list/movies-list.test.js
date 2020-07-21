@@ -5,19 +5,23 @@ import MoviesList from "./movies-list.jsx";
 const movies = [
   {
     title: `title-1`,
-    image: `image-1`
+    image: `image-1`,
+    src: `https`,
   },
   {
     title: `title-2`,
-    image: `image-2`
+    image: `image-2`,
+    src: `https`,
   },
   {
     title: `title-3`,
-    image: `image-3`
+    image: `image-3`,
+    src: `https`,
   },
   {
     title: `title-4`,
-    image: `image-4`
+    image: `image-4`,
+    src: `https`,
   }
 ];
 
@@ -29,8 +33,12 @@ describe(`MoviesListComponent`, () => {
             movies={movies}
             onTitleClick={() => {}}
             onPosterClick={() => {}}
-          />)
-      .toJSON();
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

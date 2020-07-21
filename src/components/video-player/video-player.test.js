@@ -17,7 +17,11 @@ describe(`VideoPlayerComponent`, () => {
           src={src}
           poster={image}
           muted
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

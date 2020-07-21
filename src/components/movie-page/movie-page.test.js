@@ -25,8 +25,12 @@ describe(`MoviePageComponent`, () => {
       .create(
           <MoviePage
             movie={movie}
-          />)
-      .toJSON();
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
