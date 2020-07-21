@@ -39,7 +39,7 @@ class SmallMovieCard extends PureComponent {
         }}
       >
         <div className="small-movie-card__image">
-          <VideoPlayer isPlaying={isPlaying} src={movie.src} poster={movie.image} />
+          <VideoPlayer isPlaying={isPlaying} src={movie.src} poster={movie.image} muted/>
           <img src={movie.image} alt={movie.title} width="280" height="175" />
         </div>
         <h3

@@ -268,7 +268,6 @@ Array [
           >
             <video
               className="player__video"
-              muted={true}
               poster="image-1"
             />
             <img
@@ -301,7 +300,6 @@ Array [
           >
             <video
               className="player__video"
-              muted={true}
               poster="image-2"
             />
             <img
@@ -334,7 +332,6 @@ Array [
           >
             <video
               className="player__video"
-              muted={true}
               poster="image-3"
             />
             <img
@@ -367,7 +364,6 @@ Array [
           >
             <video
               className="player__video"
-              muted={true}
               poster="image-4"
             />
             <img

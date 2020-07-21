@@ -15,7 +15,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     >
       <video
         className="player__video"
-        muted={true}
         poster="image-1"
       />
       <img
@@ -48,7 +47,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     >
       <video
         className="player__video"
-        muted={true}
         poster="image-2"
       />
       <img
@@ -81,7 +79,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     >
       <video
         className="player__video"
-        muted={true}
         poster="image-3"
       />
       <img
@@ -114,7 +111,6 @@ exports[`MoviesListComponent should render movies list correctly 1`] = `
     >
       <video
         className="player__video"
-        muted={true}
         poster="image-4"
       />
       <img
