@@ -11,19 +11,23 @@ const movie = {
 const movies = [
   {
     title: `title-1`,
-    image: `image-1`
+    image: `image-1`,
+    src: `https`,
   },
   {
     title: `title-2`,
-    image: `image-2`
+    image: `image-2`,
+    src: `https`,
   },
   {
     title: `title-3`,
-    image: `image-3`
+    image: `image-3`,
+    src: `https`,
   },
   {
     title: `title-4`,
-    image: `image-4`
+    image: `image-4`,
+    src: `https`,
   }
 ];
 
@@ -36,9 +40,12 @@ describe(`MainComponent`, () => {
             movies={movies}
             onTitleClick={() => {}}
             onPosterClick={() => {}}
-          />
-      )
-      .toJSON();
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
