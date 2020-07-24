@@ -9,6 +9,11 @@ export default class VideoPlayer extends PureComponent {
     this._timeoutPlayHandler = null;
   }
 
+  _timeoutClear() {
+    clearTimeout(this._timeoutPlayHandler);
+    this._timeoutPlayHandler = null;
+  }
+
   render() {
     const {poster} = this.props;
 
@@ -35,6 +40,8 @@ export default class VideoPlayer extends PureComponent {
     video.onplay = null;
     video.muted = null;
     video.src = ``;
+
+    this._timeoutClear();
   }
 
   componentDidUpdate() {
@@ -44,8 +51,7 @@ export default class VideoPlayer extends PureComponent {
       this._timeoutPlayHandler = setTimeout(() => video.play(), 1000);
     } else {
       if (this._timeoutPlayHandler) {
-        clearTimeout(this._timeoutPlayHandler);
-        this._timeoutPlayHandler = null;
+        this._timeoutClear();
       }
 
       video.load();
