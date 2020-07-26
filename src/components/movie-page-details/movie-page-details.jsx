@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
-const FilmPageDetails = (props) => {
+const MoviePageDetails = (props) => {
   const {
     director,
     starring,
@@ -43,7 +43,7 @@ const FilmPageDetails = (props) => {
   );
 };
 
-FilmPageDetails.propTypes = {
+MoviePageDetails.propTypes = {
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,
@@ -53,4 +53,4 @@ FilmPageDetails.propTypes = {
   time: PropTypes.string.isRequired,
 };
 
-export default FilmPageDetails;
+export default MoviePageDetails;

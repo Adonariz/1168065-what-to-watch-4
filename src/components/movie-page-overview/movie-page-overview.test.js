@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmPageOverview from "./film-page-overview";
+import MoviePageOverview from "./movie-page-overview";
 
 const mock = {
   rating: {
@@ -19,10 +19,10 @@ const mock = {
   ],
 };
 
-describe(`FilmPageOverview`, () => {
-  it(`should FilmPageOverview render correctly`, () => {
+describe(`MoviePageOverview`, () => {
+  it(`should MoviePageOverview render correctly`, () => {
     const tree = renderer.create(
-        <FilmPageOverview
+        <MoviePageOverview
           score={mock.rating.score}
           level={mock.rating.level}
           count={mock.rating.count}

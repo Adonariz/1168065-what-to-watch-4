@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilmPageReview should FilmPageReview render correctly 1`] = `
+exports[`MoviePageReview should MoviePageReview render correctly 1`] = `
 <div
   className="review"
 >

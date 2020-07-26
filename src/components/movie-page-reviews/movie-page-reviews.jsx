@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FilmPageReview from "../film-page-review/film-page-review.jsx";
+import MoviePageReview from "../movie-page-review/movie-page-review.jsx";
 
-const FilmPageReviews = (props) => {
+const MoviePageReviews = (props) => {
   const {reviews} = props;
 
   const commentsHalfLength = parseInt(reviews.length / 2, 10) + 1;
@@ -13,7 +13,7 @@ const FilmPageReviews = (props) => {
     return (
       <div className="movie-card__reviews-col">
         {filmReviews.map((review) => {
-          return <FilmPageReview
+          return <MoviePageReview
             key={review.id}
             review={review}
           />;
@@ -30,7 +30,7 @@ const FilmPageReviews = (props) => {
   );
 };
 
-FilmPageReviews.propTypes = {
+MoviePageReviews.propTypes = {
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -38,9 +38,8 @@ FilmPageReviews.propTypes = {
         text: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         rating: PropTypes.string.isRequired,
-      }
-      ).isRequired
+      }).isRequired
   ).isRequired,
 };
 
-export default FilmPageReviews;
+export default MoviePageReviews;

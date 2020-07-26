@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmPageDetails from "./film-page-details";
+import MoviePageDetails from "./movie-page-details";
 
 const mock = {
   genre: `Comedy-drama`,
@@ -15,10 +15,10 @@ const mock = {
   ],
 };
 
-describe(`FilmPageDetails`, () => {
-  it(`should FilmPageDetails render correctly`, () => {
+describe(`MoviePageDetails`, () => {
+  it(`should MoviePageDetails render correctly`, () => {
     const tree = renderer.create(
-        <FilmPageDetails
+        <MoviePageDetails
           genre={mock.genre}
           year={mock.year}
           director={mock.director}

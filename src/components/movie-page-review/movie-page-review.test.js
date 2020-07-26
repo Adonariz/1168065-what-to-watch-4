@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmPageReview from "./film-page-review";
+import MoviePageReview from "./movie-page-review";
 
 const mock = {
   id: `0`,
@@ -10,10 +10,10 @@ const mock = {
   rating: `8,9`,
 };
 
-describe(`FilmPageReview`, () => {
-  it(`should FilmPageReview render correctly`, () => {
+describe(`MoviePageReview`, () => {
+  it(`should MoviePageReview render correctly`, () => {
     const tree = renderer.create(
-        <FilmPageReview review={mock} />
+        <MoviePageReview review={mock} />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

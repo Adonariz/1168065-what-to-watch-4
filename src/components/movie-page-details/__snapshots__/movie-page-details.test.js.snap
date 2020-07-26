@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilmPageDetails should FilmPageDetails render correctly 1`] = `
+exports[`MoviePageDetails should MoviePageDetails render correctly 1`] = `
 <div
   className="movie-card__text movie-card__row"
 >

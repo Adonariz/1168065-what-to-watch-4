@@ -7,7 +7,7 @@ const checkFilmStarring = (starring) => {
   return starring.length > MAX_FILM_STARRING ? `${starring.slice(0, 4).join(`, `)} and other` : starring.join(`, `);
 };
 
-const FilmPageOverview = (props) => {
+const MoviePageOverview = (props) => {
   const {
     score,
     level,
@@ -36,7 +36,7 @@ const FilmPageOverview = (props) => {
   );
 };
 
-FilmPageOverview.propTypes = {
+MoviePageOverview.propTypes = {
   score: PropTypes.string.isRequired,
   level: PropTypes.string.isRequired,
   count: PropTypes.string.isRequired,
@@ -47,4 +47,4 @@ FilmPageOverview.propTypes = {
   ).isRequired,
 };
 
-export default FilmPageOverview;
+export default MoviePageOverview;
