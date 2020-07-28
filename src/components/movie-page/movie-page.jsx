@@ -57,7 +57,7 @@ class MoviePage extends PureComponent {
           <MoviePageReviews reviews={this.props.movie.reviews}/>
         );
       default:
-        return ``;
+        return null;
     }
   }
 

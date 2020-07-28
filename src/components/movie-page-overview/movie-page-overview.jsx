@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 const MAX_FILM_STARRING = 4;
 
 const checkFilmStarring = (starring) => {
-  return starring.length > MAX_FILM_STARRING ? `${starring.slice(0, 4).join(`, `)} and other` : starring.join(`, `);
+  if (starring.length > MAX_FILM_STARRING) {
+    return `${starring.slice(0, 4).join(`, `)} and other`;
+  } else {
+    return starring.join(`, `);
+  }
 };
 
 const MoviePageOverview = (props) => {
@@ -29,8 +33,12 @@ const MoviePageOverview = (props) => {
 
       <div className="movie-card__text">
         <p>{description}</p>
-        <p className="movie-card__director"><strong>Director: {director}</strong></p>
-        <p className="movie-card__starring"><strong>Starring: {checkFilmStarring(starring)}</strong></p>
+        <p className="movie-card__director">
+          <strong>Director: {director}</strong>
+        </p>
+        <p className="movie-card__starring">
+          <strong>Starring: {checkFilmStarring(starring)}</strong>
+        </p>
       </div>
     </Fragment>
   );
