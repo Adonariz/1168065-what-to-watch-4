@@ -3,6 +3,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
+import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 
 class App extends PureComponent {
   constructor(props) {
@@ -30,6 +31,29 @@ class App extends PureComponent {
     );
   }
 
+  _getMoviesByGenre(genre) {
+    const {movies} = this.props;
+
+    return (
+      <div className="catalog__movies-list">
+        {movies.filter((movie) => movie.genre === genre).map((movie) => {
+          return (
+            <SmallMovieCard
+              key={movie.title}
+              movie={movie}
+              onCardHover={(currentFilm) => {
+                this.setState({
+                  activeCard: currentFilm,
+                });
+              }}
+              onPosterClick={this._onTitleClickHandler}
+              onTitleClick={this._onTitleClickHandler}
+            />);
+        })}
+      </div>
+    );
+  }
+
   _onTitleClickHandler(movie) {
     this.setState({
       activePage: movie,
@@ -50,7 +74,7 @@ class App extends PureComponent {
         movie={movie}
         movies={movies}
         onTitleClick={this._onTitleClickHandler}
-        onPosterClick={() => {}}
+        onPosterClick={this._onTitleClickHandler}
       />
     );
   }
@@ -61,6 +85,7 @@ class App extends PureComponent {
     return (
       <MoviePage
         movie={movie}
+        sortedMovies={this._getMoviesByGenre(movie.genre)}
       />
     );
   }
