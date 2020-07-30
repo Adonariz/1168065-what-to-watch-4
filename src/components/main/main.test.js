@@ -13,21 +13,25 @@ const movies = [
     title: `title-1`,
     image: `image-1`,
     src: `https`,
+    genre: `Comedy`,
   },
   {
     title: `title-2`,
     image: `image-2`,
     src: `https`,
+    genre: `Crime`,
   },
   {
     title: `title-3`,
     image: `image-3`,
     src: `https`,
+    genre: `Documentary`,
   },
   {
     title: `title-4`,
     image: `image-4`,
     src: `https`,
+    genre: `Drama`,
   }
 ];
 
@@ -38,8 +42,11 @@ describe(`MainComponent`, () => {
           <Main
             movie={movie}
             movies={movies}
+            genres={[`All genres`].concat(Array.from(new Set(movies.map((item) => item.genre))))}
+            activeGenreFilter={`Comedy`}
             onTitleClick={() => {}}
             onPosterClick={() => {}}
+            onGenreClick={() => {}}
           />, {
             createNodeMock: () => {
               return {};

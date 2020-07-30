@@ -12,24 +12,34 @@ const movie = {
 const movies = [
   {
     title: `title-1`,
-    image: `image-1`
+    image: `image-1`,
+    genre: `Action`,
   },
   {
     title: `title-2`,
-    image: `image-2`
+    image: `image-2`,
+    genre: `Action`,
   },
   {
     title: `title-3`,
-    image: `image-3`
+    image: `image-3`,
+    genre: `Drama`,
   },
   {
     title: `title-4`,
-    image: `image-4`
+    image: `image-4`,
+    genre: `Comedy`,
   }];
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
+
+const Settings = {
+  FILM_GENRE: `Action`,
+  ACTIVE_GENRE_FILTER: `Action`,
+  GENRES_LIST: [`All genres`].concat(Array.from(new Set(movies.map((item) => item.genre)))),
+};
 
 describe(`MainComponent`, () => {
   it(`should title be clicked`, () => {
@@ -39,8 +49,11 @@ describe(`MainComponent`, () => {
         <Main
           movie={movie}
           movies={movies}
+          genres={Settings.GENRES_LIST}
+          activeGenreFilter={Settings.ACTIVE_GENRE_FILTER}
           onTitleClick={onTitleClick}
           onPosterClick={() => {}}
+          onGenreClick={() => {}}
         />
     );
 
@@ -57,8 +70,11 @@ describe(`MainComponent`, () => {
         <Main
           movie={movie}
           movies={movies}
+          genres={Settings.GENRES_LIST}
+          activeGenreFilter={Settings.ACTIVE_GENRE_FILTER}
           onTitleClick={() => {}}
           onPosterClick={onPosterClick}
+          onGenreClick={() => {}}
         />
     );
 
