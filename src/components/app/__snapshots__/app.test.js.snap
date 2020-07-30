@@ -155,33 +155,33 @@ Array [
       >
         <li
           className="catalog__genres-item catalog__genres-item--active"
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             All genres
           </a>
         </li>
         <li
           className="catalog__genres-item"
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Action
           </a>
         </li>
         <li
           className="catalog__genres-item"
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Drama
           </a>

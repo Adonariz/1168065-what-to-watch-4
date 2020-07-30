@@ -45,10 +45,15 @@ describe(`GenresList e2e test`, () => {
         />
     );
 
-    const listItems = genresList.find(`.catalog__genres-item`);
-    listItems.forEach((listItem) => listItem.simulate(`click`));
+    const elements = genresList.find(`.catalog__genres-link`);
 
-    expect(onGenreClick).toHaveBeenCalledTimes(listItems.length);
+    const mockEvent = {
+      preventDefault() {}
+    };
+
+    elements.forEach((listItem) => listItem.simulate(`click`, mockEvent));
+
+    expect(onGenreClick).toHaveBeenCalledTimes(elements.length);
     expect(onGenreClick.mock.calls[0][0]).toBe(`All genres`);
     expect(onGenreClick.mock.calls[1][0]).toBe(`Drama`);
   });
