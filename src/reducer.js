@@ -5,7 +5,7 @@ import movies from "./components/mocks/movies";
 
 const initialState = {
   genre: ALL_GENRES,
-  genreList: getGenresList(movies),
+  genresList: getGenresList(movies),
   movie,
   movies,
 };
@@ -21,7 +21,7 @@ export const ActionCreator = {
     return {
       type: ActionType.SET_FILTER_BY_GENRE,
       genre,
-      movies: sortedMovies,
+      movies: sortedMovies
     };
   },
 };
@@ -31,7 +31,7 @@ export const reducer = (state = initialState, action) => {
     case ActionType.SET_FILTER_BY_GENRE:
       return extend(state, {
         genre: action.genre,
-        movies: action.movies,
+        movies: action.movies
       });
     default:
       return state;
