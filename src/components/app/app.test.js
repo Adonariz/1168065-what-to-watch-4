@@ -1,6 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import {App} from "./app.jsx";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import {getGenresList} from "../../utils";
+
+const mockStore = configureStore([]);
 
 const movie = {
   title: `The Grand Budapest Hotel`,
@@ -40,32 +45,44 @@ const movies = [
     title: `title-1`,
     image: `image-1`,
     src: `https`,
+    genre: `Action`,
   },
   {
     title: `title-2`,
     image: `image-2`,
     src: `https`,
+    genre: `Action`,
   },
   {
     title: `title-3`,
     image: `image-3`,
     src: `https`,
+    genre: `Drama`,
   },
   {
     title: `title-4`,
     image: `image-4`,
     src: `https`,
+    genre: `Drama`,
   }
 ];
 
 describe(`AppComponent`, () => {
   it(`should render App`, () => {
+    const store = mockStore({
+      genre: `All genres`
+    });
+
     const tree = renderer
       .create(
-          <App
-            movie={movie}
-            movies={movies}
-          />, {
+          <Provider store={store}>
+            <App
+              movie={movie}
+              movies={movies}
+              genresList={getGenresList(movies)}
+              activeGenreFilter={`All genres`}
+              onGenreClick={() => {}} />
+          </Provider>, {
             createNodeMock: () => {
               return {};
             }

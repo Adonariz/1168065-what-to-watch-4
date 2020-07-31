@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
+import {getGenresList} from "../../utils";
 
 const movie = {
   title: `The Dark Knight`,
@@ -13,21 +14,25 @@ const movies = [
     title: `title-1`,
     image: `image-1`,
     src: `https`,
+    genre: `Comedy`,
   },
   {
     title: `title-2`,
     image: `image-2`,
     src: `https`,
+    genre: `Crime`,
   },
   {
     title: `title-3`,
     image: `image-3`,
     src: `https`,
+    genre: `Documentary`,
   },
   {
     title: `title-4`,
     image: `image-4`,
     src: `https`,
+    genre: `Drama`,
   }
 ];
 
@@ -38,8 +43,11 @@ describe(`MainComponent`, () => {
           <Main
             movie={movie}
             movies={movies}
+            genres={getGenresList(movies)}
+            activeGenreFilter={`Comedy`}
             onTitleClick={() => {}}
             onPosterClick={() => {}}
+            onGenreClick={() => {}}
           />, {
             createNodeMock: () => {
               return {};

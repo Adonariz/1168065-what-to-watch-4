@@ -2,6 +2,7 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
+import {getGenresList} from "../../utils";
 
 const movie = {
   title: `The Dark Knight`,
@@ -12,24 +13,34 @@ const movie = {
 const movies = [
   {
     title: `title-1`,
-    image: `image-1`
+    image: `image-1`,
+    genre: `Action`,
   },
   {
     title: `title-2`,
-    image: `image-2`
+    image: `image-2`,
+    genre: `Action`,
   },
   {
     title: `title-3`,
-    image: `image-3`
+    image: `image-3`,
+    genre: `Drama`,
   },
   {
     title: `title-4`,
-    image: `image-4`
+    image: `image-4`,
+    genre: `Comedy`,
   }];
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
+
+const Settings = {
+  FILM_GENRE: `Action`,
+  ACTIVE_GENRE_FILTER: `Action`,
+  GENRES_LIST: getGenresList(movies),
+};
 
 describe(`MainComponent`, () => {
   it(`should title be clicked`, () => {
@@ -39,8 +50,11 @@ describe(`MainComponent`, () => {
         <Main
           movie={movie}
           movies={movies}
+          genres={Settings.GENRES_LIST}
+          activeGenreFilter={Settings.ACTIVE_GENRE_FILTER}
           onTitleClick={onTitleClick}
           onPosterClick={() => {}}
+          onGenreClick={() => {}}
         />
     );
 
@@ -57,8 +71,11 @@ describe(`MainComponent`, () => {
         <Main
           movie={movie}
           movies={movies}
+          genres={Settings.GENRES_LIST}
+          activeGenreFilter={Settings.ACTIVE_GENRE_FILTER}
           onTitleClick={() => {}}
           onPosterClick={onPosterClick}
+          onGenreClick={() => {}}
         />
     );
 
