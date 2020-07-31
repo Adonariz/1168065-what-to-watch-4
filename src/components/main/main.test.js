@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
+import {getGenresList} from "../../utils";
 
 const movie = {
   title: `The Dark Knight`,
@@ -42,7 +43,7 @@ describe(`MainComponent`, () => {
           <Main
             movie={movie}
             movies={movies}
-            genres={[`All genres`].concat(Array.from(new Set(movies.map((item) => item.genre))))}
+            genres={getGenresList(movies)}
             activeGenreFilter={`Comedy`}
             onTitleClick={() => {}}
             onPosterClick={() => {}}

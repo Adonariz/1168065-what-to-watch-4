@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import {App} from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import {getGenresList} from "../../utils";
 
 const mockStore = configureStore([]);
 
@@ -78,7 +79,7 @@ describe(`AppComponent`, () => {
             <App
               movie={movie}
               movies={movies}
-              genresList={[`All genres`].concat(Array.from(new Set(movies.map((item) => item.genre))))}
+              genresList={getGenresList(movies)}
               activeGenreFilter={`All genres`}
               onGenreClick={() => {}} />
           </Provider>, {

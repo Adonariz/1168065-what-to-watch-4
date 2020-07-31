@@ -10,5 +10,7 @@ export const formatReviewDate = (dateString) => {
 export const extend = (a, b) => Object.assign({}, a, b);
 
 export const getGenresList = (movies) => {
-  return [ALL_GENRES].concat(Array.from(new Set(movies.map((movie) => movie.genre))));
+  const genresList = Array.from(new Set(movies.map((movie) => movie.genre)));
+
+  return [ALL_GENRES].concat(genresList);
 };

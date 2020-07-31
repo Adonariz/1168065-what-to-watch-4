@@ -2,6 +2,7 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
+import {getGenresList} from "../../utils";
 
 const movie = {
   title: `The Dark Knight`,
@@ -38,7 +39,7 @@ Enzyme.configure({
 const Settings = {
   FILM_GENRE: `Action`,
   ACTIVE_GENRE_FILTER: `Action`,
-  GENRES_LIST: [`All genres`].concat(Array.from(new Set(movies.map((item) => item.genre)))),
+  GENRES_LIST: getGenresList(movies),
 };
 
 describe(`MainComponent`, () => {
