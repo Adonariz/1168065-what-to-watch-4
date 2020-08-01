@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 import {getGenresList} from "../../utils";
+import {MAX_MOVIES_LENGTH} from "../../const";
 
 const movie = {
   title: `The Dark Knight`,
@@ -36,6 +37,12 @@ const movies = [
   }
 ];
 
+const Settings = {
+  GENRES_LIST: getGenresList(movies),
+  IS_MORE_MOVIES: true,
+  SHOWN_MOVIES_COUNT: MAX_MOVIES_LENGTH,
+};
+
 describe(`MainComponent`, () => {
   it(`should render Main correctly `, () => {
     const tree = renderer
@@ -43,11 +50,14 @@ describe(`MainComponent`, () => {
           <Main
             movie={movie}
             movies={movies}
-            genres={getGenresList(movies)}
+            genres={Settings.GENRES_LIST}
             activeGenreFilter={`Comedy`}
             onTitleClick={() => {}}
             onPosterClick={() => {}}
             onGenreClick={() => {}}
+            onShowMoreButtonClick={() => {}}
+            isMoreMovies={Settings.IS_MORE_MOVIES}
+            shownMoviesCount={Settings.SHOWN_MOVIES_COUNT}
           />, {
             createNodeMock: () => {
               return {};

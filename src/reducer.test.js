@@ -99,7 +99,14 @@ const movies = [
     image: `img/johnny-english.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     genre: `Comedy-drama`,
-  }
+  },
+  {
+    title: `Revenant`,
+    image: `img/revenant.jpg`,
+    link: `movie-page.html`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    genre: `Thriller`
+  },
 ];
 
 describe(`Reducer test`, () => {
@@ -109,6 +116,9 @@ describe(`Reducer test`, () => {
       genresList: getGenresList(movies),
       movie,
       movies,
+      moviesByGenre: null,
+      isMoreMovies: true,
+      shownMoviesCount: 8,
     });
   });
 
@@ -118,8 +128,12 @@ describe(`Reducer test`, () => {
     }, {
       type: ActionType.SET_FILTER_BY_GENRE,
       genre: `Action`,
+      movies,
     })).toEqual({
       genre: `Action`,
+      movies,
+      isMoreMovies: true,
+      shownMoviesCount: 8,
     });
   });
 
@@ -131,9 +145,31 @@ describe(`Reducer test`, () => {
       type: ActionType.SET_FILTER_BY_GENRE,
       genre: `Drama`,
       movies: filterMovies(movies, `Drama`),
+      moviesByGenre: filterMovies(movies, `Drama`),
     })).toEqual({
       genre: `Drama`,
       movies: filterMovies(movies, `Drama`),
+      moviesByGenre: filterMovies(movies, `Drama`),
+      isMoreMovies: false,
+      shownMoviesCount: 8,
+    });
+  });
+
+  it(`Reducer should show more films by a press the button`, () => {
+    expect(reducer({
+      genre: `All genres`,
+      movies,
+      moviesByGenre: movies,
+      isMoreMovies: true,
+      shownMoviesCount: 8,
+    }, {
+      type: ActionType.SHOW_MORE_MOVIES,
+    })).toEqual({
+      genre: `All genres`,
+      movies,
+      moviesByGenre: movies,
+      isMoreMovies: true,
+      shownMoviesCount: 16,
     });
   });
 });

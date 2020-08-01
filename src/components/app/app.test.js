@@ -4,6 +4,7 @@ import {App} from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {getGenresList} from "../../utils";
+import {MAX_MOVIES_LENGTH} from "../../const";
 
 const mockStore = configureStore([]);
 
@@ -67,6 +68,12 @@ const movies = [
   }
 ];
 
+const Settings = {
+  IS_MORE_MOVIES: true,
+  GENRES_LIST: getGenresList(movies),
+  SHOWN_MOVIES_COUNT: MAX_MOVIES_LENGTH,
+};
+
 describe(`AppComponent`, () => {
   it(`should render App`, () => {
     const store = mockStore({
@@ -79,9 +86,13 @@ describe(`AppComponent`, () => {
             <App
               movie={movie}
               movies={movies}
-              genresList={getGenresList(movies)}
+              genresList={Settings.GENRES_LIST}
               activeGenreFilter={`All genres`}
-              onGenreClick={() => {}} />
+              onGenreClick={() => {}}
+              onShowMoreButtonClick={() => {}}
+              isMoreMovies={Settings.IS_MORE_MOVIES}
+              shownMoviesCount={Settings.SHOWN_MOVIES_COUNT}
+            />
           </Provider>, {
             createNodeMock: () => {
               return {};

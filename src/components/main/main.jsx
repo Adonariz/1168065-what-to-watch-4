@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
+import ShowMore from "../show-more/show-more.jsx";
 
 const Main = (props) => {
   const {
@@ -11,7 +12,10 @@ const Main = (props) => {
     onTitleClick,
     onPosterClick,
     onGenreClick,
+    onShowMoreButtonClick,
     activeGenreFilter,
+    isMoreMovies,
+    shownMoviesCount
   } = props;
 
   return (
@@ -82,14 +86,15 @@ const Main = (props) => {
           />
 
           <MoviesList
-            movies={movies}
+            movies={movies.slice(0, shownMoviesCount)}
             onTitleClick={onTitleClick}
             onPosterClick={onPosterClick}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {isMoreMovies && (movies.length - shownMoviesCount) > 0 ?
+            <ShowMore
+              onShowMoreButtonClick={onShowMoreButtonClick}
+            /> : ``}
         </section>
 
         <footer className="page-footer">
@@ -129,6 +134,9 @@ Main.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   onPosterClick: PropTypes.func.isRequired,
   onGenreClick: PropTypes.func.isRequired,
+  onShowMoreButtonClick: PropTypes.func.isRequired,
+  isMoreMovies: PropTypes.bool.isRequired,
+  shownMoviesCount: PropTypes.number.isRequired,
 };
 
 export default Main;
