@@ -1,7 +1,7 @@
 import {ALL_GENRES} from "./const";
 import {extend, getGenresList} from "./utils";
-import movie from "./components/mocks/movie";
-import movies from "./components/mocks/movies";
+import movie from "./mocks/movie";
+import movies from "./mocks/movies";
 
 const initialState = {
   genre: ALL_GENRES,
