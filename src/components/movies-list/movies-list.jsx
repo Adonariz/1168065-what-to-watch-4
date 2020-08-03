@@ -1,40 +1,32 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
+import withVideo from "../../hocs/with-video/with-video";
 
-export default class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
+const SmallMovieCardWrapped = withVideo(SmallMovieCard);
 
-    this.state = {
-      activeCard: {},
-    };
-  }
+const MoviesList = (props) => {
+  const {
+    movies,
+    onTitleClick,
+    onPosterClick,
+  } = props;
 
-  render() {
-    const {movies, onTitleClick, onPosterClick} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {movies.map((movie, index) => {
-          return (
-            <SmallMovieCard
-              key={movie.title + index}
-              movie={movie}
-              onTitleClick={onTitleClick}
-              onPosterClick={onPosterClick}
-              onCardHover={(currentMovie) => {
-                this.setState({
-                  activeCard: currentMovie,
-                });
-              }}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.map((movie, index) => {
+        return (
+          <SmallMovieCardWrapped
+            key={movie.title + index}
+            movie={movie}
+            onTitleClick={onTitleClick}
+            onPosterClick={onPosterClick}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
@@ -46,3 +38,5 @@ MoviesList.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   onPosterClick: PropTypes.func.isRequired,
 };
+
+export default MoviesList;

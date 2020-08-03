@@ -15,7 +15,8 @@ describe(`SmallMovieCardComponent`, () => {
           <SmallMovieCard
             onTitleClick={() => {}}
             onPosterClick={() => {}}
-            onCardHover={() => {}}
+            isPlaying={false}
+            setPlayingMovie={() => {}}
             movie={movie}
           />, {
             createNodeMock: () => {
