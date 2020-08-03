@@ -46,4 +46,12 @@ export default [
     image: `img/johnny-english.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     genre: `Comedy-drama`,
-  }];
+  },
+  {
+    title: `Revenant`,
+    image: `img/revenant.jpg`,
+    link: `movie-page.html`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    genre: `Thriller`
+  },
+];
