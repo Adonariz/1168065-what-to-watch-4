@@ -33,10 +33,8 @@ const Settings = {
 };
 
 const setMoviesList = (array) => {
-  if (array.length < 10) {
-    for (let i = 0; array.length < 10; i++) {
-      array.push(array[0]);
-    }
+  for (let i = 0; array.length < 10; i++) {
+    array.push(array[0]);
   }
 
   return array;
