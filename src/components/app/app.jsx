@@ -1,11 +1,16 @@
 import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import {ActionCreator} from "../../reducer.js";
+import withActiveTab from "../../hocs/with-active-tab/witch-active-tab";
+import withVideo from "../../hocs/with-video/with-video";
+
+const MoviePageWrapped = withActiveTab(MoviePage);
+const SmallMovieCardWrapped = withVideo(SmallMovieCard);
 
 class App extends PureComponent {
   constructor() {
@@ -40,14 +45,9 @@ class App extends PureComponent {
       <div className="catalog__movies-list">
         {movies.filter((movie) => movie.genre === genre).map((movie) => {
           return (
-            <SmallMovieCard
+            <SmallMovieCardWrapped
               key={movie.title}
               movie={movie}
-              onCardHover={(currentFilm) => {
-                this.setState({
-                  activeCard: currentFilm,
-                });
-              }}
               onPosterClick={this._onTitleClickHandler}
               onTitleClick={this._onTitleClickHandler}
             />);
@@ -100,7 +100,7 @@ class App extends PureComponent {
     const {movie} = this.props;
 
     return (
-      <MoviePage
+      <MoviePageWrapped
         movie={movie}
         sortedMovies={this._getMoviesByGenre(movie.genre)}
       />

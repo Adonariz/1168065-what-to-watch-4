@@ -22,7 +22,8 @@ describe(`SmallMovieCardComponent e2e test`, () => {
           movie={movie}
           onTitleClick={onTitleClick}
           onPosterClick={() => {}}
-          onCardHover={() => {}}
+          isPlaying={false}
+          setPlayingMovie={() => {}}
         />
     );
 
@@ -46,7 +47,8 @@ describe(`SmallMovieCardComponent e2e test`, () => {
           movie={movie}
           onTitleClick={() => {}}
           onPosterClick={onPosterClick}
-          onCardHover={() => {}}
+          isPlaying={false}
+          setPlayingMovie={() => {}}
         />
     );
 
@@ -55,24 +57,5 @@ describe(`SmallMovieCardComponent e2e test`, () => {
 
     expect(onPosterClick).toHaveBeenCalledTimes(1);
     expect(onPosterClick).toHaveBeenCalledWith(movie);
-  });
-
-  it(`Should Card be hovered with correct args`, () => {
-    const onCardHover = jest.fn();
-
-    const smallMovieCard = shallow(
-        <SmallMovieCard
-          movie={movie}
-          onTitleClick={() => {}}
-          onPosterClick={() => {}}
-          onCardHover={onCardHover}
-        />
-    );
-
-    const card = smallMovieCard.find(`.small-movie-card`);
-    card.simulate(`mouseenter`);
-
-    expect(onCardHover).toHaveBeenCalledTimes(1);
-    expect(onCardHover).toHaveBeenCalledWith(movie);
   });
 });
