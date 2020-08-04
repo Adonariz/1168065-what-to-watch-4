@@ -8,6 +8,7 @@ const movie = {
   title: `The Dark Knight`,
   genre: `Action`,
   year: 2008,
+  source: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
 const movies = [
@@ -56,6 +57,7 @@ describe(`MainComponent`, () => {
             onPosterClick={() => {}}
             onGenreClick={() => {}}
             onShowMoreButtonClick={() => {}}
+            onPlayButtonClick={() => {}}
             isMoreMovies={Settings.IS_MORE_MOVIES}
             shownMoviesCount={Settings.SHOWN_MOVIES_COUNT}
           />, {

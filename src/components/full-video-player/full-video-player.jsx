@@ -1,33 +1,65 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
-const FullVideoPlayer = () => {
+const FullVideoPlayer = (props) => {
+  const {
+    title,
+    onExitButtonClick,
+    progress,
+    duration,
+    isPlaying,
+    formatDurationToTime,
+    playbackToggleVideo,
+    setFullScreen,
+    children
+  } = props;
+
   return (
     <Fragment>
       <div className="player">
-        <video src="#" className="player__video" poster="img/player-poster.jpg"/>
-
-        <button type="button" className="player__exit">Exit</button>
+        {children}
+        <button
+          type="button" className="player__exit"
+          onClick={() => onExitButtonClick}
+        >
+          Exit
+        </button>
 
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value="30" max="100"/>
-              <div className="player__toggler" style={{left: 30 + `%`}}>Toggler</div>
+              <progress className="player__progress" value={progress} max={duration}/>
+              <div className="player__toggler" style={{left: ((progress * 100) / duration) + `%`}}>Toggler</div>
             </div>
-            <div className="player__time-value">1:30:29</div>
+            <div className="player__time-value">{formatDurationToTime(duration)}</div>
           </div>
 
           <div className="player__controls-row">
-            <button type="button" className="player__play">
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"/>
-              </svg>
-              <span>Play</span>
-            </button>
-            <div className="player__name">Transpotting</div>
+            <button
+              type="button" className="player__play"
+              onClick={playbackToggleVideo}>
 
-            <button type="button" className="player__full-screen">
+              {isPlaying ?
+                <Fragment>
+                  <svg viewBox="0 0 14 21" width="14" height="21">
+                    <use xlinkHref="#pause"/>
+                  </svg>
+                  <span>Pause</span>
+                </Fragment>
+                :
+                <Fragment>
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#play-s"/>
+                  </svg>
+                  <span>Play</span>
+                </Fragment>}
+            </button>
+
+            <div className="player__name">{title}</div>
+
+            <button
+              type="button" className="player__full-screen"
+              onClick={setFullScreen}>
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen"/>
               </svg>
@@ -40,6 +72,16 @@ const FullVideoPlayer = () => {
   );
 };
 
-FullVideoPlayer.propTypes = {};
+FullVideoPlayer.propTypes = {
+  title: PropTypes.string.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired,
+  progress: PropTypes.number.isRequired,
+  duration: PropTypes.number.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  formatDurationToTime: PropTypes.func.isRequired,
+  playbackToggleVideo: PropTypes.func.isRequired,
+  setFullScreen: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
+};
 
 export default FullVideoPlayer;

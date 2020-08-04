@@ -9,6 +9,7 @@ const movie = {
   title: `The Dark Knight`,
   genre: `Action`,
   year: 2008,
+  source: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
 const movies = [
@@ -30,6 +31,11 @@ const Settings = {
   GENRES_LIST: getGenresList(movies),
   IS_MORE_MOVIES: true,
   SHOWN_MOVIES_COUNT: MAX_MOVIES_LENGTH,
+};
+
+const PlayerSettings = {
+  title: movie.title,
+  source: movie.source,
 };
 
 const setMoviesList = (array) => {
@@ -54,6 +60,7 @@ describe(`MainComponent`, () => {
           onPosterClick={() => {}}
           onGenreClick={() => {}}
           onShowMoreButtonClick={() => {}}
+          onPlayButtonClick={() => {}}
           isMoreMovies={Settings.IS_MORE_MOVIES}
           shownMoviesCount={Settings.SHOWN_MOVIES_COUNT}
         />
@@ -78,6 +85,7 @@ describe(`MainComponent`, () => {
           onPosterClick={onPosterClick}
           onGenreClick={() => {}}
           onShowMoreButtonClick={() => {}}
+          onPlayButtonClick={() => {}}
           isMoreMovies={Settings.IS_MORE_MOVIES}
           shownMoviesCount={Settings.SHOWN_MOVIES_COUNT}
         />
@@ -102,6 +110,7 @@ describe(`MainComponent`, () => {
           onPosterClick={() => {}}
           onGenreClick={() => {}}
           onShowMoreButtonClick={onShowMoreButtonClick}
+          onPlayButtonClick={() => {}}
           isMoreMovies={Settings.IS_MORE_MOVIES}
           shownMoviesCount={Settings.SHOWN_MOVIES_COUNT}
         />
@@ -111,5 +120,31 @@ describe(`MainComponent`, () => {
 
     showMoreButton.simulate(`click`);
     expect(onShowMoreButtonClick).toHaveBeenCalledTimes(1);
+  });
+
+  it(`should play button be clicked`, () => {
+    const onPlayButtonClick = jest.fn();
+
+    const main = mount(
+        <Main
+          movie={movie}
+          movies={movies}
+          genres={Settings.GENRES_LIST}
+          activeGenreFilter={Settings.ACTIVE_GENRE_FILTER}
+          onTitleClick={() => {}}
+          onPosterClick={() => {}}
+          onGenreClick={() => {}}
+          onShowMoreButtonClick={() => {}}
+          onPlayButtonClick={onPlayButtonClick}
+          isMoreMovies={Settings.IS_MORE_MOVIES}
+          shownMoviesCount={Settings.SHOWN_MOVIES_COUNT}
+        />
+    );
+
+    const playButton = main.find(`.btn--play`);
+
+    playButton.simulate(`click`);
+    expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
+    expect(onPlayButtonClick).toHaveBeenCalledWith(PlayerSettings);
   });
 });
