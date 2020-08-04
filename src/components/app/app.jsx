@@ -8,6 +8,7 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import withActiveTab from "../../hocs/with-active-tab/witch-active-tab";
 import withVideo from "../../hocs/with-video/with-video";
+import FullVideoPlayer from "../full-video-player/full-video-player.jsx";
 
 const MoviePageWrapped = withActiveTab(MoviePage);
 const SmallMovieCardWrapped = withVideo(SmallMovieCard);
@@ -17,9 +18,10 @@ class App extends PureComponent {
     super();
 
     this._onTitleClickHandler = this._onTitleClickHandler.bind(this);
+    this._onPlayButtonClickHandler = this._onPlayButtonClickHandler.bind(this);
 
     this.state = {
-      activePage: {},
+      activePage: {id: 0},
     };
   }
 
@@ -62,10 +64,22 @@ class App extends PureComponent {
     });
   }
 
+  _onButtonClickHandler(movieForPlayer) {
+    this.setState({
+      activePage: movieForPlayer,
+    });
+  }
+
   _renderApp() {
     const {activePage} = this.state;
 
-    return Object.keys(activePage).length === 0 ? this._renderMain() : this._renderMoviePage();
+    if (activePage.id === 1) {
+      return this._renderMoviePage();
+    } else if (activePage.id === 2) {
+      return this._renderFullVideoPlayer();
+    } else {
+      return this._renderMain();
+    }
   }
 
   _renderMain() {
@@ -105,6 +119,10 @@ class App extends PureComponent {
         sortedMovies={this._getMoviesByGenre(movie.genre)}
       />
     );
+  }
+
+  _renderFullVideoPlayer() {
+    return <FullVideoPlayer/>;
   }
 }
 

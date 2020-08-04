@@ -14,7 +14,7 @@ const SmallMovieCard = (props) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={() => onPosterClick(movie)}
+      onClick={() => onPosterClick(Object.assign({id: 1}, movie))}
       onMouseEnter={() => setPlayingMovie(true)}
       onMouseLeave={() => setPlayingMovie(false)}
     >
@@ -33,7 +33,7 @@ const SmallMovieCard = (props) => {
         <a
           onClick={(evt) => {
             evt.preventDefault();
-            onTitleClick(movie);
+            onTitleClick(Object.assign({id: 1}, movie));
           }}
           className="small-movie-card__link"
           href="movie-page.html"
