@@ -86,21 +86,23 @@ const withFullVideo = (Component) => {
     }
 
     render() {
-      return <Component
-        {...this.props}
-        progress={this.state.progress}
-        duration={this.state.duration}
-        isPlaying={this.state.isPlaying}
-        formatDurationToTime={this._formatDurationToTime}
-        playbackToggleVideo={this._playbackToggleVideo}
-        setFullScreen={this._setFullScreen}
-      >
-        <video
-          ref={this._videoRef}
-          className="player__video"
-          poster="img/player-poster.jpg"
-        />
-      </Component>;
+      return (
+        <Component
+          {...this.props}
+          progress={this.state.progress}
+          duration={this.state.duration}
+          isPlaying={this.state.isPlaying}
+          formatDurationToTime={this._formatDurationToTime}
+          playbackToggleVideo={this._playbackToggleVideo}
+          setFullScreen={this._setFullScreen}
+        >
+          <video
+            ref={this._videoRef}
+            className="player__video"
+            poster="img/player-poster.jpg"
+          />
+        </Component>
+      );
     }
   }
 
