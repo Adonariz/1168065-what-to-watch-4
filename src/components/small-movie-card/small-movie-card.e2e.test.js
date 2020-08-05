@@ -4,6 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import SmallMovieCard from "./small-movie-card.jsx";
 
 const movie = {
+  id: 1,
   title: `The Grand Budapest Hotel`,
   image: `img/the-grand-budapest-hotel-poster.jpg`,
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,

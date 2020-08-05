@@ -8,18 +8,25 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import withActiveTab from "../../hocs/with-active-tab/witch-active-tab";
 import withVideo from "../../hocs/with-video/with-video";
+import FullVideoPlayer from "../full-video-player/full-video-player.jsx";
+import withFullVideo from "../../hocs/with-full-video/with-full-video";
 
 const MoviePageWrapped = withActiveTab(MoviePage);
 const SmallMovieCardWrapped = withVideo(SmallMovieCard);
+const FullVideoPlayerWrapped = withFullVideo(FullVideoPlayer);
 
 class App extends PureComponent {
   constructor() {
     super();
 
     this._onTitleClickHandler = this._onTitleClickHandler.bind(this);
+    this._onPlayButtonClickHandler = this._onPlayButtonClickHandler.bind(this);
+    this._onExitButtonClickHandler = this._onExitButtonClickHandler.bind(this);
 
     this.state = {
       activePage: {},
+      movieSource: {},
+      isVideoPlayer: false,
     };
   }
 
@@ -62,8 +69,30 @@ class App extends PureComponent {
     });
   }
 
+  _onPlayButtonClickHandler(movieForPlayer) {
+    this.setState({
+      movieSource: movieForPlayer,
+      isVideoPlayer: true,
+    });
+  }
+
+  _onExitButtonClickHandler() {
+    this.setState({
+      movieSource: {},
+      isVideoPlayer: false,
+    });
+  }
+
   _renderApp() {
-    const {activePage} = this.state;
+    const {
+      activePage,
+      movieSource,
+      isVideoPlayer,
+    } = this.state;
+
+    if (isVideoPlayer) {
+      return this._renderFullVideoPlayer(movieSource);
+    }
 
     return Object.keys(activePage).length === 0 ? this._renderMain() : this._renderMoviePage();
   }
@@ -87,6 +116,7 @@ class App extends PureComponent {
         genres={genresList}
         onTitleClick={this._onTitleClickHandler}
         onPosterClick={this._onTitleClickHandler}
+        onPlayButtonClick={this._onPlayButtonClickHandler}
         onGenreClick={onGenreClick}
         onShowMoreButtonClick={onShowMoreButtonClick}
         activeGenreFilter={activeGenreFilter}
@@ -103,6 +133,17 @@ class App extends PureComponent {
       <MoviePageWrapped
         movie={movie}
         sortedMovies={this._getMoviesByGenre(movie.genre)}
+        onPlayButtonClick={this._onPlayButtonClickHandler}
+      />
+    );
+  }
+
+  _renderFullVideoPlayer(movie) {
+    return (
+      <FullVideoPlayerWrapped
+        title={movie.title}
+        movie={movie.source}
+        onExitButtonClick={this._onExitButtonClickHandler}
       />
     );
   }
@@ -112,14 +153,8 @@ App.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
   }).isRequired,
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-      }).isRequired
-  ).isRequired,
+  movies: PropTypes.array.isRequired,
   genresList: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,

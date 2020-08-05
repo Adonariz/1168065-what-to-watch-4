@@ -9,6 +9,7 @@ const MoviePage = (props) => {
     activeTab,
     setActiveTab,
     renderActiveTab,
+    onPlayButtonClick
   } = props;
 
   return (
@@ -46,15 +47,21 @@ const MoviePage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  className="btn btn--play movie-card__button" type="button"
+                  onClick={() => onPlayButtonClick({
+                    title: movie.title,
+                    source: movie.source,
+                  })}
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
+                    <use xlinkHref="#play-s"/>
                   </svg>
                   <span>Play</span>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
+                    <use xlinkHref="#add"/>
                   </svg>
                   <span>My list</span>
                 </button>
@@ -116,11 +123,13 @@ MoviePage.propTypes = {
     year: PropTypes.number.isRequired,
     background: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
   }).isRequired,
   sortedMovies: PropTypes.element.isRequired,
   activeTab: PropTypes.string.isRequired,
   setActiveTab: PropTypes.func.isRequired,
   renderActiveTab: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 export default MoviePage;
